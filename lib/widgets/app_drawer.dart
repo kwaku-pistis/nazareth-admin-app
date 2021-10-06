@@ -12,10 +12,12 @@ class AppDrawer extends StatelessWidget {
         child: ListView(
       padding: EdgeInsets.zero,
       children: [
-        const DrawerHeader(
-            decoration: BoxDecoration(color: Colors.red),
-            child: Text("Nazareth Presby",
-                style: TextStyle(color: Colors.white, fontSize: 20))),
+        DrawerHeader(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/pcg_main_house.jpeg"), fit: BoxFit.cover)),
+            child: Container()
+        ),
         ListTile(
           leading: const Icon(Icons.announcement),
           title: const Text("Announcement"),
