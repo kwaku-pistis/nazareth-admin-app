@@ -3,26 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nazareth_upload_app/widgets/app_drawer.dart';
 
-class DailyVerse extends StatefulWidget {
-  const DailyVerse({Key? key}) : super(key: key);
+class DailyInspiration extends StatefulWidget {
+  const DailyInspiration({Key? key}) : super(key: key);
 
   @override
-  _DailyVerseState createState() => _DailyVerseState();
+  _DailyInspirationState createState() => _DailyInspirationState();
 }
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
-var _scriptureTextController = TextEditingController();
-var _verseTextController = TextEditingController();
+var _authorTextController = TextEditingController();
+var _qouteTextController = TextEditingController();
 
-var _isScriptureError = false;
-var _isVerseTextError = false;
+var _isAuthorTextError = false;
+var _isqouteTextError = false;
 
-class _DailyVerseState extends State<DailyVerse> {
+class _DailyInspirationState extends State<DailyInspiration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Daily Verse"),
+          title: const Text("Daily Inspiration"),
         ),
         drawer: const AppDrawer(),
         body: SingleChildScrollView(
@@ -37,7 +37,7 @@ class _DailyVerseState extends State<DailyVerse> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: const Text(
-                        "Add Daily Verse",
+                        "Add Daily Inspiration",
                         style: TextStyle(
                           fontSize: 20,
                         ),
@@ -47,12 +47,12 @@ class _DailyVerseState extends State<DailyVerse> {
                     const SizedBox(height: 20),
                     SizedBox(
                       child: TextField(
-                        controller: _scriptureTextController,
+                        controller: _authorTextController,
                         decoration: InputDecoration(
-                          hintText: "(Eg: Genesis 1:1)",
-                          label: const Text("Scripture"),
-                          errorText: _isScriptureError
-                              ? "Please enter the scripture"
+                          hintText: "(Kenneth Hagin)",
+                          label: const Text("Author"),
+                          errorText: _isAuthorTextError
+                              ? "Please enter the author"
                               : null,
                           border: const OutlineInputBorder(
                               borderRadius:
@@ -64,12 +64,11 @@ class _DailyVerseState extends State<DailyVerse> {
                     const SizedBox(height: 20),
                     SizedBox(
                       child: TextField(
-                        controller: _verseTextController,
+                        controller: _qouteTextController,
                         decoration: InputDecoration(
-                            // label: Text("Verse(s) Text"),
-                            hintText: "Enter verse text...",
-                            errorText: _isVerseTextError
-                                ? "Please enter the bible verse"
+                            hintText: "Enter quote...",
+                            errorText: _isqouteTextError
+                                ? "Please enter the quote"
                                 : null,
                             border: const OutlineInputBorder(
                                 borderRadius:
@@ -88,56 +87,52 @@ class _DailyVerseState extends State<DailyVerse> {
                       alignment: Alignment.centerRight,
                       child: ElevatedButton(
                         onPressed: () {
-                          _uploadDailyVerse(
-                              _scriptureTextController.text.toString().trim(),
-                              _verseTextController.text.toString().trim());
+                          _uploadDailyInspiration(
+                              _authorTextController.text.toString().trim(),
+                              _qouteTextController.text.toString().trim());
                         },
                         child: const Text(
                           "UPLOAD",
                           style: TextStyle(fontSize: 16),
                         ),
-                        // style: ButtonStyle(
-                        //   elevation: MaterialStateProperty
-
-                        // ),
                       ),
                     )
                   ],
                 ))));
   }
 
-  _uploadDailyVerse(String scripture, String verseText) {
-    if (scripture.isEmpty || scripture == "") {
+  _uploadDailyInspiration(String author, String quote) {
+    if (author.isEmpty || author == "") {
       setState(() {
-        _isScriptureError = true;
+        _isAuthorTextError = true;
       });
     } else {
       setState(() {
-        _isScriptureError = false;
+        _isAuthorTextError = false;
       });
     }
 
-    if (verseText.isEmpty || verseText == "") {
+    if (quote.isEmpty || quote == "") {
       setState(() {
-        _isVerseTextError = true;
+        _isqouteTextError = true;
       });
     } else {
       setState(() {
-        _isVerseTextError = false;
+        _isqouteTextError = false;
       });
     }
 
-    if (!_isScriptureError && !_isVerseTextError) {
+    if (!_isAuthorTextError && !_isqouteTextError) {
       firestore
-          .collection("daily verse")
-          .add({"scripture": scripture, "text": verseText}).then((value) {
+          .collection("daily inspiration")
+          .add({"author": author, "quote": quote}).then((value) {
         print("Uploaded");
         Fluttertoast.showToast(
             msg: "Daily Verse Uploaded Successfully",
             gravity: ToastGravity.BOTTOM,
             toastLength: Toast.LENGTH_LONG);
-        _scriptureTextController.clear();
-        _verseTextController.clear();
+        _authorTextController.clear();
+        _qouteTextController.clear();
       }).catchError((error) => print("Error: $error"));
     }
   }
