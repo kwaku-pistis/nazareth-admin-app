@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:nazareth_upload_app/widgets/app_drawer.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,31 +18,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Nazareth Admin App")),
-      drawer: Drawer(
-          child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.red),
-              child: Text("Nazareth Presby",
-                  style: TextStyle(color: Colors.white, fontSize: 20))),
-          ListTile(
-            leading: const Icon(Icons.announcement),
-            title: const Text("Announcement"),
-            onTap: (){},
-          ),
-          ListTile(
-            leading: const Icon(Icons.menu_book),
-            title: const Text("Daily Verse"),
-            onTap: (){},
-          ),
-          ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text("Daily Inspiration"),
-            onTap: (){},
-          ),
-        ],
-      )),
+      drawer: const AppDrawer(),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -85,7 +62,7 @@ class _HomeState extends State<Home> {
                   _upload(_textController.text.toString().trim());
                 },
                 child: const Text(
-                  "SEND",
+                  "UPLOAD",
                   style: TextStyle(fontSize: 16),
                 ),
                 // style: ButtonStyle(
