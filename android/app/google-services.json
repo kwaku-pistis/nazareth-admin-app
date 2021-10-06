@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "375741818048",
+    "project_id": "nazareth-website",
+    "storage_bucket": "nazareth-website.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375741818048:android:3ce1afacfe12fe48f77925",
+        "android_client_info": {
+          "package_name": "com.pistis.nazareth_upload_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375741818048-va76ueafkvtb0han9a841ptd3i7jn86m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pistis.nazareth_upload_app",
+            "certificate_hash": "577da2aa332be4231c896d4c564e5af95b225cfb"
+          }
+        },
+        {
+          "client_id": "375741818048-ej8184lg8ht3gdn2d8b2ansfag145gmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfzUhaDQfWdv-NWpWNDIhcBvCEJRCdA6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375741818048-ej8184lg8ht3gdn2d8b2ansfag145gmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
