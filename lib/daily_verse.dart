@@ -128,9 +128,11 @@ class _DailyVerseState extends State<DailyVerse> {
     }
 
     if (!_isScriptureError && !_isVerseTextError) {
-      firestore
-          .collection("daily verse")
-          .add({"scripture": scripture, "text": verseText}).then((value) {
+      firestore.collection("daily verse").add({
+        "scripture": scripture,
+        "text": verseText,
+        "datetime": DateTime.now().toString()
+      }).then((value) {
         print("Uploaded");
         Fluttertoast.showToast(
             msg: "Daily Verse Uploaded Successfully",
