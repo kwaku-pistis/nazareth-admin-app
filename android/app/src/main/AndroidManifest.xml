@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pistis.nazareth_upload_app">
    <application
-        android:label="nazareth_upload_app"
+        android:label="PCG - Nazareth Admin"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
@@ -20,7 +20,7 @@
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER"/> 
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
