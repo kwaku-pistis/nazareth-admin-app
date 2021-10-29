@@ -20,12 +20,8 @@ var _isqouteTextError = false;
 class _DailyInspirationState extends State<DailyInspiration> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("Daily Inspiration"),
-        ),
-        drawer: const AppDrawer(),
-        body: SingleChildScrollView(
+    return SizedBox(
+        child: SingleChildScrollView(
             child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
